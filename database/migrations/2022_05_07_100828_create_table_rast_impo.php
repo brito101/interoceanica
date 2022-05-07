@@ -13,12 +13,12 @@ class CreateTableRastImpo extends Migration
      */
     public function up()
     {
-        Schema::table('Rast_Impo', function (Blueprint $table) {
+        Schema::create('Rast_Impo', function (Blueprint $table) {
             $table->string('Im_TipoReg', 50);
-            $table->interger('Im_MasterCod');
-            $table->interger('Im_HouseCod');
-            $table->interger('Im_CotacaoCod');
-            $table->interger('Im_CneeCod');
+            $table->integer('Im_MasterCod');
+            $table->integer('Im_HouseCod');
+            $table->integer('Im_CotacaoCod');
+            $table->integer('Im_CneeCod');
             $table->string('Im_CneeNome', 100);
             $table->string('Im_CneeRef', 50);
             $table->string('Im_CneeLogin', 50);
@@ -83,8 +83,6 @@ class CreateTableRastImpo extends Migration
      */
     public function down()
     {
-        Schema::table('Rast_Impo', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('Rast_Impo');
     }
 }

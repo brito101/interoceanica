@@ -13,7 +13,7 @@ class CreateTableRastExpo extends Migration
      */
     public function up()
     {
-        Schema::table('Rast_Expo', function (Blueprint $table) {
+        Schema::create('Rast_Expo', function (Blueprint $table) {
             $table->integer('Ex_ReservaCod');
             $table->string('Ex_ReservaNr', 50);
             $table->string('Ex_BLNr', 50);
@@ -63,8 +63,6 @@ class CreateTableRastExpo extends Migration
      */
     public function down()
     {
-        Schema::table('Rast_Expo', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('Rast_Expo');
     }
 }
