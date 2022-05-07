@@ -22,77 +22,39 @@ class AppController extends Controller
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
         if ($email && $password) {
-            return view('app.home.index');
+            $impo = RastImpo::where('Im_CneeLogin', $email)->count();
+            $expo = RastExpo::where('Ex_ClienteLogin', $email)->count();
+            return view('app.home.index', compact('impo', 'expo'));
         } else {
             return redirect()
                 ->route('login');
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function export(Request $request)
     {
-        //
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $expo = RastExpo::where('Ex_ClienteLogin', $email)->get();
+            return view('app.export.index', compact('expo'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function import(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $impo = RastImpo::where('Im_CneeLogin', $email)->get();
+            return view('app.import.index', compact('impo'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
     }
 
     public function login(Request $request)
@@ -127,7 +89,7 @@ class AppController extends Controller
 
     public function logout(Request $request)
     {
-        // $request->session()->forget(['user', 'password']);
+        $request->session()->forget(['user', 'password']);
         return redirect()
             ->route('login');
     }

@@ -23,8 +23,14 @@
                 </div>
             </div>
         @endisset
+        @if (session()->has('email'))
+            <div class="user-panel my-2 d-flex">
+                <h5 class="w-100 text-center text-white text-sm">{{ session('email') }}</h5>
+            </div>
+        @endif
 
-        <nav class="pt-2">
+        <nav class="
+                    pt-2">
             <ul class="nav nav-pills nav-sidebar flex-column {{ config('adminlte.classes_sidebar_nav', '') }}"
                 data-widget="treeview" role="menu"
                 @if (config('adminlte.sidebar_nav_animation_speed') != 300) data-animation-speed="{{ config('adminlte.sidebar_nav_animation_speed') }}" @endif

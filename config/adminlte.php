@@ -234,11 +234,21 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Pesquisar',
-        ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'Pesquisar',
+        // ],
         //Custom menus
+        [
+            'text'        => 'Exportações',
+            'url'         => '/app/export',
+            'icon'        => 'fas fa-fw fa-level-up-alt',
+        ],
+        [
+            'text'        => 'Importações',
+            'url'         => '/app/import',
+            'icon'        => 'fas fa-fw fa-level-down-alt',
+        ],
         [
             'text'        => 'Logout',
             'url'         => '/app/logout',

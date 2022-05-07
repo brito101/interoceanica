@@ -48,8 +48,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 /** App */
 Route::get('/app/home', [AppController::class, 'index'])->name('app.home');
+Route::get('/app/import', [AppController::class, 'import'])->name('app.impot');
+Route::get('/app/export', [AppController::class, 'export'])->name('app.export');
 Route::get('/app/logout', [AppController::class, 'logout'])->name('app.logout');
 Route::post('app', [AppController::class, 'login'])->name('app.login');
+
+Route::get('/app', function () {
+    return redirect('app/home');
+});
 
 
 /**Redirect */
