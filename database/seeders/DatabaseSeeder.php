@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             RolesTableSeeder::class,
             RolesHasPermissionTableSeeder::class,
             ModelHasRoleTableSeeder::class,
+            RastImpoTableSeeder::class,
+            RastExpoTableSeeder::class,
         ]);
     }
 }
