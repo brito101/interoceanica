@@ -16,7 +16,7 @@ class RastExpoTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Rast_Expo')->insert(
+        DB::table('Rast_Expo')->insert([
             [
                 'Ex_ReservaCod' => rand(0, 99999),
                 'Ex_ReservaNr' => Str::random(50),
@@ -304,6 +304,6 @@ class RastExpoTableSeeder extends Seeder
                 'Ex_Container' => Str::random(50),
                 'Ex_TipoTransbo' => Str::random(50)
             ]
-        );
+        ]);
     }
 }
