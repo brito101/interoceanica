@@ -47,7 +47,6 @@
                         <div class="card-header">
                             <div class="d-flex flex-wrap justify-content-between col-12 align-content-center">
                                 <h3 class="card-title align-self-center">Dados Cadastrados</h3>
-                                <a href="{{ route('app.export.geral') }}" class="btn btn-info">Planilha Geral</a>
                             </div>
                         </div>
                         <div class="card-body">

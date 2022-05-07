@@ -44,6 +44,38 @@ class AppController extends Controller
         }
     }
 
+    public function exportGEral(Request $request)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $expo = RastExpo::where('Ex_ClienteLogin', $email)->get();
+            return view('app.export.geral', compact('expo'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function exportCod(Request $request, $cod)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $expo = RastExpo::where('Ex_ReservaCod', $cod)->where('Ex_ClienteLogin', $email)->first();
+            if ($expo) {
+                return view('app.export.item', compact('expo'));
+            } else {
+                return redirect()
+                    ->route('app.export')
+                    ->with('error', 'Nenhum registro encontrado!');
+            }
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
     public function import(Request $request)
     {
         $email = $request->session()->get('email');
@@ -51,6 +83,38 @@ class AppController extends Controller
         if ($email && $password) {
             $impo = RastImpo::where('Im_CneeLogin', $email)->get();
             return view('app.import.index', compact('impo'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function importGeral(Request $request)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $impo = RastImpo::where('Im_CneeLogin', $email)->get();
+            return view('app.import.geral', compact('impo'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function importCod(Request $request, $cod)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $impo = RastImpo::where('Im_MasterCod', $cod)->where('Im_CneeLogin', $email)->first();
+            if ($impo) {
+                return view('app.import.item', compact('impo'));
+            } else {
+                return redirect()
+                    ->route('app.import')
+                    ->with('error', 'Nenhum registro encontrado!');
+            }
         } else {
             return redirect()
                 ->route('login');

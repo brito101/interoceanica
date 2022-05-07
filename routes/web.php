@@ -48,8 +48,12 @@ Route::group(['middleware' => ['auth']], function () {
 
 /** App */
 Route::get('/app/home', [AppController::class, 'index'])->name('app.home');
-Route::get('/app/import', [AppController::class, 'import'])->name('app.impot');
+Route::get('/app/import', [AppController::class, 'import'])->name('app.import');
+Route::get('/app/import-geral', [AppController::class, 'importGeral'])->name('app.import.geral');
+Route::get('/app/import/{cod}', [AppController::class, 'importCod'])->name('app.import.cod');
 Route::get('/app/export', [AppController::class, 'export'])->name('app.export');
+Route::get('/app/export-geral', [AppController::class, 'exportGeral'])->name('app.export.geral');
+Route::get('/app/export/{cod}', [AppController::class, 'exportCod'])->name('app.export.cod');
 Route::get('/app/logout', [AppController::class, 'logout'])->name('app.logout');
 Route::post('app', [AppController::class, 'login'])->name('app.login');
 

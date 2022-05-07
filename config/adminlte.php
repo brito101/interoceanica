@@ -190,7 +190,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin',
+    'dashboard_url' => 'app',
     'logout_url' => 'logout',
     // 'login_url' => 'login',
     'login_url' => 'app',
