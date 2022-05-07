@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class RastImpo extends Model
 {
     use HasFactory;
+
+    protected $table = 'Rast_Expo';
 }
