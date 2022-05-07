@@ -47,9 +47,9 @@ return [
     |
     */
 
-    'logo' => env('APP_NAME'),
-    'logo_img' => 'vendor/adminlte/dist/img/logo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => null,
+    'logo_img' => 'img/logo.png',
+    'logo_img_class' => 'brand-image float-none',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => env('APP_NAME'),
@@ -124,7 +124,7 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
+    'classes_brand' => 'd-flex flex-wrap justify-content-center',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
