@@ -9,5 +9,5 @@ class RastImpo extends Model
 {
     use HasFactory;
 
-    protected $table = 'Rast_Expo';
+    protected $table = 'Rast_Impo';
 }

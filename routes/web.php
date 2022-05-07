@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ACL\RoleController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Tracking\AppController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,9 +46,13 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
-/** Web */
-/** Home */
-// Route::get('/', [SiteController::class, 'index'])->name('home');
+/** App */
+Route::get('/app/home', [AppController::class, 'index'])->name('app.home');
+Route::get('/app/logout', [AppController::class, 'logout'])->name('app.logout');
+Route::post('app', [AppController::class, 'login'])->name('app.login');
+
+
+/**Redirect */
 Route::get('/', function () {
     return redirect('admin');
 });

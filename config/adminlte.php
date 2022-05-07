@@ -192,10 +192,11 @@ return [
     'use_route_url' => false,
     'dashboard_url' => 'admin',
     'logout_url' => 'logout',
-    'login_url' => 'login',
+    // 'login_url' => 'login',
+    'login_url' => 'app',
     'register_url' => false, //'register',
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
+    'password_reset_url' => false,
+    'password_email_url' => false,
     'profile_url' => false,
 
     /*
@@ -238,6 +239,11 @@ return [
             'text' => 'Pesquisar',
         ],
         //Custom menus
+        [
+            'text'        => 'Logout',
+            'url'         => '/app/logout',
+            'icon'        => 'fas fa-fw fa-power-off',
+        ],
         [
             'text'        => 'Usuários',
             'url'         => '#',
