@@ -298,7 +298,7 @@
                                         value="{{ $impo->Im_Controle1 }}" disabled>
                                 </div>
                                 <div class="col-12 col-md-4 form-group px-0 px-md-2">
-                                    <label for="name">Reserva Cancelada = ‘CANCELADA’</label>
+                                    <label for="name">Reserva Cancelada</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_Cancela }}" disabled>
                                 </div>
