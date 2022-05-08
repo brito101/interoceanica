@@ -45,6 +45,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <img src="{{ asset('img/logo.png') }}">
+                        </div>
+                        <div class="card-body p-md-5">
+                            Desde 2002, a Interoceanica oferece soluções completas em logística integrada e agenciamento de
+                            cargas, proporcionando alta performance em suas operações nos mais diversos segmentos. Somos uma
+                            companhia orgulhosamente brasileira, reconhecida internacionalmente pela qualidade de nossos
+                            serviços na indústria de cargas especiais e logística com resultados comprovados pelo mercado.
+                            Excelência, criatividade e inovação, aliados a mais de 20 anos de mercado.
+                        </div>
+
+                    </div>
                 </div>
             </div>
     </section>
