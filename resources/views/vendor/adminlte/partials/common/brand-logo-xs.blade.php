@@ -14,8 +14,7 @@
         class="brand-link {{ config('adminlte.classes_brand') }}" @endif>
 
     {{-- Small brand logo --}}
-    <img src="{{ asset(config('adminlte.logo_img', 'vendor/adminlte/dist/img/logo.png')) }}"
-        alt="{{ config('adminlte.logo_img_alt', 'AdminLTE') }}"
+    <img src="{{ asset('img/logo-white.png') }}" alt="{{ config('adminlte.logo_img_alt', 'AdminLTE') }}"
         class="{{ config('adminlte.logo_img_class', 'brand-image img-circle elevation-3') }}" style="max-width: 100%">
 
     {{-- Brand text --}}
