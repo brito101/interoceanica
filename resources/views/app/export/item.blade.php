@@ -51,14 +51,6 @@
                                         disabled>
                                 </div>
 
-
-
-                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
-                                    <label for="name">Código do Cliente
-                                    </label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $expo->Ex_ClienteCod }}" disabled>
-                                </div>
                                 <div class="col-12 col-md-4 form-group px-0 px-md-2">
                                     <label for="name">Nome Fantasia do Cliente</label>
                                     <input type="text" class="form-control" name="name"

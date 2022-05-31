@@ -40,96 +40,51 @@
                                     <input type="text" class="form-control" name="name" value="{{ $impo->Im_TipoReg }}"
                                         disabled>
                                 </div>
-                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
-                                    <label for="name">Código do Master</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_MasterCod }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
-                                    <label for="name">Código do House</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $impo->Im_HouseCod }}"
-                                        disabled>
-                                </div>
 
-                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
-                                    <label for="name">Código da Cotação
-                                    </label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_CotacaoCod }}" disabled>
-                                </div>
                                 <div class="col-12 col-md-4 form-group px-0 px-md-2">
-                                    <label for="name">Código do Consignee</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $impo->Im_CneeCod }}"
-                                        disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Nome do Consignee</label>
                                     <input type="text" class="form-control" name="name" value="{{ $impo->Im_CneeNome }}"
                                         disabled>
                                 </div>
 
-                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Referência do Consignee</label>
                                     <input type="text" class="form-control" name="name" value="{{ $impo->Im_CneeRef }}"
                                         disabled>
                                 </div>
-                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
                                     <label for="name">Código do Shipper</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_ShipperCod }}" disabled>
                                 </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
                                     <label for="name">Nome do Shipper</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_ShipperNome }}" disabled>
                                 </div>
 
-                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
-                                    <label for="name">Código do Notify</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_NotifyCod }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Nome do Notify</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_NotifyNome }}" disabled>
                                 </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
-                                    <label for="name">Código do Despachante</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $impo->Im_DespCod }}"
-                                        disabled>
-                                </div>
 
                                 <div class="col-12 col-md-4 form-group px-0 pr-md-2">
                                     <label for="name">Nome do Despachante</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_DespNome }}" disabled>
+                                    <input type="text" class="form-control" name="name" value="{{ $impo->Im_DespNome }}"
+                                        disabled>
                                 </div>
+
                                 <div class="col-12 col-md-4 form-group px-0 px-md-2">
-                                    <label for="name">Código do Cliente</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_ClienteCod }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Nome do Cliente</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_ClienteNome }}" disabled>
                                 </div>
 
-                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
-                                    <label for="name">Código do “Seu Cliente”</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_SeuCliCod }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Nome do “Seu Cliente”</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_SeuCliNome }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
-                                    <label for="name">Código do Porto de Origem</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_OrigemCod }}" disabled>
                                 </div>
 
                                 <div class="col-12 col-md-4 form-group px-0 pr-md-2">
@@ -137,31 +92,17 @@
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_OrigemNome }}" disabled>
                                 </div>
+
                                 <div class="col-12 col-md-4 form-group px-0 px-md-2">
-                                    <label for="name">Código do Porto de Destino</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_DestinoCod }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Nome do Porto de Destino</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_DestinoNome }}" disabled>
                                 </div>
 
-                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
-                                    <label for="name">Código do Place Receipt</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_PlaceCod }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Nome do Place Receipt</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_PlaceNome }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
-                                    <label for="name">Código do Final Destination</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_FinalCod }}" disabled>
                                 </div>
 
                                 <div class="col-12 col-md-4 form-group px-0 pr-md-2">
@@ -293,48 +234,38 @@
                                 </div>
 
                                 <div class="col-12 col-md-4 form-group px-0 pr-md-2">
-                                    <label for="name">Controle de envio para site</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_Controle1 }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
                                     <label for="name">Reserva Cancelada</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_Cancela }}" disabled>
-                                </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
-                                    <label for="name">Referência do Master</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ $impo->Im_RefMaster }}" disabled>
+                                    <input type="text" class="form-control" name="name" value="{{ $impo->Im_Cancela }}"
+                                        disabled>
                                 </div>
 
-                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
                                     <label for="name">Navio de Transbordo</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_Tra_Navio }}" disabled>
                                 </div>
-                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Destino do Transbordo</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_Tra_Destino }}" disabled>
                                 </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
                                     <label for="name">Previsão de Saida do Transbordo</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_Tra_PrevSaida }}" disabled>
                                 </div>
 
-                                <div class="col-12 col-md-4 form-group px-0 pr-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
                                     <label for="name">Data de Saída do Transbordo</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_Tra_Saida }}" disabled>
                                 </div>
-                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
                                     <label for="name">Data da Liberação da Carga</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_DtLibera }}" disabled>
                                 </div>
-                                <div class="col-12 col-md-4 form-group px-0 pl-md-2">
+                                <div class="col-12 col-md-4 form-group px-0 px-md-2">
                                     <label for="name">Data da Retirada da Carga </label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $impo->Im_DtRetirada }}" disabled>
