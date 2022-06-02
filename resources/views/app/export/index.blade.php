@@ -7,18 +7,18 @@
 @section('content')
 
     @php
-    $heads = ['Código', 'nº Reserva', 'nº H B/L', 'Nome Fantasia', 'Visualizar'];
+    $heads = ['Código', 'nº Reserva', 'nº H B/L', 'Visualizar'];
 
     $list = [];
 
     foreach ($expo as $e) {
-        $list[] = [$e->Ex_ReservaCod, $e->Ex_ReservaNr, $e->Ex_BLNr, $e->Ex_ClienteFanta, '<nobr>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Visualizar" href="export/' . $e->Ex_ReservaCod . '"><i class="fa fa-lg fa-fw fa-eye"></i></a>'];
+        $list[] = [$e->Ex_ReservaCod, $e->Ex_ReservaNr, $e->Ex_BLNr, '<nobr>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Visualizar" href="export/' . $e->Ex_ReservaCod . '"><i class="fa fa-lg fa-fw fa-eye"></i></a>'];
     }
 
     $config = [
         'data' => $list,
         'order' => [[0, 'asc']],
-        'columns' => [null, null, null, null, ['orderable' => false]],
+        'columns' => [null, null, null, ['orderable' => false]],
         'language' => ['url' => asset('vendor/datatables/js/pt-BR.json')],
     ];
     @endphp

@@ -7,18 +7,18 @@
 @section('content')
 
     @php
-    $heads = ['Tipo de Registro (Routing ou House)', 'Consignee', 'Ref Consignee', 'Cód Shipper', 'Shipper', 'Notify', 'Despachante', 'Cliente', '“Seu Cliente”', 'Porto Origem', 'Cód Porto Destino', 'Porto Destino', 'Local de Recepção', 'Destino Final', 'nº M B/L', 'Data M B/L', 'Navio', 'Viagem', 'Armador', 'Terminal', 'Atracação', 'Operação do Navio', 'nº do House BL', 'House BL', 'Tipo Carga (LCL, FCL, ....)', 'Cubagem', 'Peso Bruto Carga', 'Mercadoria', 'nº da Cotação', 'Cotação', 'Observação Status', 'Previsão Prontidão', 'Previsão Saída', 'Saída Real do Navio', 'Previsão Chegada', 'Última ALT Registro', 'Hora Última ALT Registro', 'Reserva Cancelada', 'Navio de Transbordo', 'Destino Transbordo', 'Previsão Saida do Transbordo', 'Saída do Transbordo', 'Liberação da Carga', 'Retirada da Carga'];
+    $heads = ['Consignee', 'Ref Consignee', 'Shipper', 'Porto Origem', 'Cód Porto Destino', 'Porto Destino', 'Local de Recepção', 'Destino Final', 'nº M B/L', 'Navio', 'Viagem', 'Armador', 'Terminal', 'nº do House BL', 'House BL', 'Tipo Carga (LCL, FCL, ....)', 'nº da Cotação', 'Saída Real do Navio', 'Liberação da Carga'];
 
     $list = [];
 
     foreach ($impo as $e) {
-        $list[] = [$e->Im_TipoReg, $e->Im_CneeNome, $e->Im_CneeRef, $e->Im_ShipperCod, $e->Im_ShipperNome, $e->Im_NotifyNome, $e->Im_DespNome, $e->Im_ClienteNome, $e->Im_SeuCliNome, $e->Im_OrigemNome, $e->Im_DestinoNome, $e->Im_PlaceNome, $e->Im_FinalCod, $e->Im_FinalNome, $e->Im_NrMBL, $e->Im_DataMBL, $e->Im_Navio, $e->Im_Viagem, $e->Im_Armador, $e->Im_Terminal, $e->Im_Atracacao, $e->Im_Operacao, $e->Im_NrHBL, $e->Im_DataHBL, $e->Im_TipoCarga, $e->Im_Cubagem, $e->Im_Peso, $e->Im_DescriMerc, $e->Im_CotacaoNr, $e->Im_DataCota, $e->Im_ObsStatus, $e->Im_PrevPront, $e->Im_PrevSaida, $e->Im_SaidaReal, $e->Im_PrevChega, $e->Im_Gravacao, $e->Im_GravaHora, $e->Im_Cancela, $e->Im_Tra_Navio, $e->Im_Tra_Destino, $e->Im_Tra_PrevSaida, $e->Im_Tra_Saida, $e->Im_DtLibera, $e->Im_DtRetirada];
+        $list[] = [$e->Im_CneeNome, $e->Im_CneeRef, $e->Im_ShipperNome, $e->Im_OrigemNome, $e->Im_DestinoNome, $e->Im_PlaceNome, $e->Im_FinalCod, $e->Im_FinalNome, $e->Im_NrMBL, $e->Im_Navio, $e->Im_Viagem, $e->Im_Armador, $e->Im_Terminal, $e->Im_NrHBL, $e->Im_DataHBL, $e->Im_TipoCarga, $e->Im_CotacaoNr, $e->Im_SaidaReal, $e->Im_DtLibera];
     }
 
     $config = [
         'data' => $list,
         'order' => [[0, 'asc']],
-        'columns' => [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'columns' => [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
         'language' => ['url' => asset('vendor/datatables/js/pt-BR.json')],
     ];
     @endphp
