@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Tracking;
 
 use App\Http\Controllers\Controller;
+use App\Models\RastEscala;
 use App\Models\RastExpo;
+use App\Models\RastHouse;
 use App\Models\RastImpo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -24,7 +26,10 @@ class AppController extends Controller
         if ($email && $password) {
             $impo = RastImpo::where('Im_CneeLogin', $email)->count();
             $expo = RastExpo::where('Ex_ClienteLogin', $email)->count();
-            return view('app.home.index', compact('impo', 'expo'));
+            $rasthouse = RastHouse::where('Ra_Login', $email)->count();
+            $rasthouseId = RastHouse::where('Ra_Login', $email)->pluck('Ra_CodHouse');
+            $rastescala = RastEscala::whereIn('Re_Codigo', $rasthouseId)->count();
+            return view('app.home.index', compact('impo', 'expo', 'rasthouse', 'rastescala'));
         } else {
             return redirect()
                 ->route('login');
@@ -44,7 +49,7 @@ class AppController extends Controller
         }
     }
 
-    public function exportGEral(Request $request)
+    public function exportGeral(Request $request)
     {
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
@@ -121,6 +126,85 @@ class AppController extends Controller
         }
     }
 
+    public function rastHouse(Request $request)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $rasthouse = RastHouse::where('Ra_Login', $email)->get();
+            return view('app.rasthouse.index', compact('rasthouse'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function rastHouseGeral(Request $request)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $house = RastHouse::where('Ra_Login', $email)->get();
+            return view('app.rasthouse.geral', compact('house'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function rastHouseCod(Request $request, $cod)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $item = RastHouse::where('Ra_CodHouse', $cod)->where('Ra_Login', $email)->first();
+            if ($item) {
+                return view('app.rasthouse.item', compact('item'));
+            } else {
+                return redirect()
+                    ->route('app.rasthouse')
+                    ->with('error', 'Nenhum registro encontrado!');
+            }
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function rastEscala(Request $request)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $rasthouse = RastHouse::where('Ra_Login', $email)->pluck('Ra_CodHouse');
+            $rastescala = RastEscala::whereIn('Re_Codigo', $rasthouse)->get();
+            return view('app.rastescala.index', compact('rastescala'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function rastEscalaCod(Request $request, $cod)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $house = RastHouse::where('Ra_CodHouse', $cod)->where('Ra_Login', $email)->first();
+            $item = RastEscala::where('Re_Codigo', $house->Ra_CodHouse)->first();
+            if ($item) {
+                return view('app.rastescala.item', compact('item'));
+            } else {
+                return redirect()
+                    ->route('app.rastescala')
+                    ->with('error', 'Nenhum registro encontrado!');
+            }
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -135,12 +219,12 @@ class AppController extends Controller
             $password = $request['password'];
             $impo = RastImpo::where('Im_CneeLogin', $email)->where('Im_CneeSenha', $password)->first();
             $expo = RastExpo::where('Ex_ClienteLogin', $email)->where('Ex_ClienteSenha', $password)->first();
-            if ($impo || $expo) {
+            $rastHouse = RastHouse::where('Ra_Login', $email)->where('Ra_Senha', $password)->first();
+            if ($impo || $expo || $rastHouse) {
                 $request->session()->put('email', $email);
                 $request->session()->put('password', $password);
                 return redirect()
-                    ->route('app.home')
-                    ->with('success', 'Seja Bem vindo!');
+                    ->route('app.home');
             } else {
                 return redirect()
                     ->route('login')->withErrors($messages)->withInput();

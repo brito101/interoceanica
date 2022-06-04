@@ -48,12 +48,22 @@ Route::group(['middleware' => ['auth']], function () {
 
 /** App */
 Route::get('/app/home', [AppController::class, 'index'])->name('app.home');
+/** Maritime */
 Route::get('/app/import', [AppController::class, 'import'])->name('app.import');
 Route::get('/app/import-geral', [AppController::class, 'importGeral'])->name('app.import.geral');
 Route::get('/app/import/{cod}', [AppController::class, 'importCod'])->name('app.import.cod');
+
 Route::get('/app/export', [AppController::class, 'export'])->name('app.export');
 Route::get('/app/export-geral', [AppController::class, 'exportGeral'])->name('app.export.geral');
 Route::get('/app/export/{cod}', [AppController::class, 'exportCod'])->name('app.export.cod');
+/** Aereo */
+Route::get('/app/house', [AppController::class, 'rastHouse'])->name('app.rastHouse');
+Route::get('/app/house-geral', [AppController::class, 'rastHouseGeral'])->name('app.rastHouse.geral');
+Route::get('/app/house/{cod}', [AppController::class, 'rastHouseCod'])->name('app.rastHouse.cod');
+
+Route::get('/app/escala', [AppController::class, 'rastEscala'])->name('app.rastEscala');
+Route::get('/app/escala/{cod}', [AppController::class, 'rastEscalaCod'])->name('app.rastEscala.cod');
+/** Login/Logout */
 Route::get('/app/logout', [AppController::class, 'logout'])->name('app.logout');
 Route::post('app', [AppController::class, 'login'])->name('app.login');
 

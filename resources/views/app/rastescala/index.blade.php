@@ -2,33 +2,32 @@
 @section('plugins.Datatables', true)
 @section('plugins.DatatablesPlugins', true)
 
-@section('title', '- Importações')
+@section('title', '- Escala')
 
 @section('content')
 
     @php
-    $heads = ['Consignee', 'Shipper', 'Visualizar'];
-    $headsUs = ['Consignee', 'Shipper', 'View'];
+    $heads = ['Aeroporto', 'Voo', 'Data', 'Hora', 'Visualizar'];
+    $headsUs = ['Airport', 'Flight', 'Date', 'Hour', 'View'];
 
     $list = [];
     $listUs = [];
 
-    foreach ($impo as $e) {
-        $list[] = [$e->Im_CneeNome, $e->Im_ShipperNome, '<nobr>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Visualizar" href="import/' . $e->Im_MasterCod . '"><i class="fa fa-lg fa-fw fa-eye"></i></a>'];
-        $listUs[] = [$e->Im_CneeNome, $e->Im_ShipperNome, '<nobr>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="View" href="import/' . $e->Im_MasterCod . '"><i class="fa fa-lg fa-fw fa-eye"></i></a>'];
+    foreach ($rastescala as $e) {
+        $list[] = [$e->Re_Aeroporto, $e->Re_Flight, $e->Re_Data, $e->Re_Hora, '<nobr>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Visualizar" href="escala/' . $e->Re_Codigo . '"><i class="fa fa-lg fa-fw fa-eye"></i></a>'];
+        $listUs[] = [$e->Re_Aeroporto, $e->Re_Flight, $e->Re_Data, $e->Re_Hora, '<nobr>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="View" href="escala/' . $e->Re_Codigo . '"><i class="fa fa-lg fa-fw fa-eye"></i></a>'];
     }
 
     $config = [
         'data' => $list,
         'order' => [[0, 'asc']],
-        'columns' => [null, null, ['orderable' => false]],
+        'columns' => [null, null, null, null, ['orderable' => false]],
         'language' => ['url' => asset('vendor/datatables/js/pt-BR.json')],
     ];
-
     $configUs = [
         'data' => $listUs,
         'order' => [[0, 'asc']],
-        'columns' => [null, null, ['orderable' => false]],
+        'columns' => [null, null, null, null, ['orderable' => false]],
     ];
     @endphp
 
@@ -37,12 +36,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><i class="fas fa-level-down-alt"></i> Importações</h1>
+                        <h1><i class="fas fa-plane-departure"></i> Escala</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('app.home') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Importações</li>
+                            <li class="breadcrumb-item active">Escala</li>
                         </ol>
                     </div>
                 </div>
@@ -57,7 +56,7 @@
                             <div class="card-header">
                                 <div class="d-flex flex-wrap justify-content-between col-12 align-content-center">
                                     <h3 class="card-title align-self-center">Dados Cadastrados</h3>
-                                    <a href="{{ route('app.import.geral') }}" class="btn btn-info">Planilha Geral</a>
+                                    {{-- <a href="{{ route('app.rastEscala.geral') }}" class="btn btn-info">Planilha Geral</a> --}}
                                 </div>
                             </div>
                             <div class="card-body">
@@ -75,12 +74,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><i class="fas fa-level-down-alt"></i> Imports</h1>
+                        <h1><i class="fas fa-plane-departure"></i> Scale</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('app.home') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Imports</li>
+                            <li class="breadcrumb-item active">Scale</li>
                         </ol>
                     </div>
                 </div>
@@ -95,7 +94,7 @@
                             <div class="card-header">
                                 <div class="d-flex flex-wrap justify-content-between col-12 align-content-center">
                                     <h3 class="card-title align-self-center">Registered Data</h3>
-                                    <a href="{{ route('app.import.geral') }}" class="btn btn-info">General Worksheet</a>
+                                    {{-- <a href="{{ route('app.rastEscala.geral') }}" class="btn btn-info">Planilha Geral</a> --}}
                                 </div>
                             </div>
                             <div class="card-body">

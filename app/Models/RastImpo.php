@@ -80,4 +80,23 @@ class RastImpo extends Model
     {
         return date('d/m/Y H:i:s', strtotime($value));
     }
+
+    /** Aux */
+    public function getDataHBL()
+    {
+        $date = explode('/', $this->Im_DataHBL);
+        return $date[1] . '/' . $date[0] . '/' . $date[2];
+    }
+
+    public function getSaidaReal()
+    {
+        $date = explode('/', $this->Im_SaidaReal);
+        return $date[1] . '/' . $date[0] . '/' . $date[2];
+    }
+
+    public function getDtLibera()
+    {
+        $date = explode('/', $this->Im_DtLibera);
+        return $date[1] . '/' . $date[0] . '/' . $date[2];
+    }
 }

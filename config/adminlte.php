@@ -229,6 +229,54 @@ return [
 
     'menu' => [
         [
+            'text' => 'Idioma',
+            'topnav_right' => true,
+            'icon' => 'fa fa-language',
+            'data' => [
+                'menu' => 'br'
+            ],
+            'submenu' => [
+                [
+                    'text' => 'Português Brasileiro',
+                    'url' => '#',
+                    'data' => [
+                        'flag' => 'br',
+                    ]
+                ],
+                [
+                    'text' => 'Inglês Americano',
+                    'url' => '#',
+                    'data' => [
+                        'flag' => 'us',
+                    ]
+                ]
+            ]
+        ],
+        [
+            'text' => 'Language',
+            'topnav_right' => true,
+            'icon' => 'fa fa-language',
+            'data' => [
+                'menu' => 'us'
+            ],
+            'submenu' => [
+                [
+                    'text' => 'Brazilian Portuguese',
+                    'url' => '#',
+                    'data' => [
+                        'flag' => 'br',
+                    ]
+                ],
+                [
+                    'text' => 'American English',
+                    'url' => '#',
+                    'data' => [
+                        'flag' => 'us',
+                    ]
+                ]
+            ]
+        ],
+        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
@@ -240,15 +288,110 @@ return [
         // ],
         //Custom menus
         [
-            'text'        => 'Exportações',
-            'url'         => '/app/export',
-            'icon'        => 'fas fa-fw fa-level-up-alt',
+            'text'        => 'Marítimo',
+            'url'         => '#',
+            'icon'        => 'fas fa-fw fa-anchor',
+            'data' => [
+                'menu' => 'br'
+            ],
+            'submenu' => [
+                [
+                    'text'        => 'Exportações',
+                    'url'         => '/app/export',
+                    'icon'        => 'fas fa-fw fa-chevron-right',
+                    'data' => [
+                        'menu' => 'br'
+                    ],
+                ],
+                [
+                    'text'        => 'Importações',
+                    'url'         => '/app/import',
+                    'icon'        => 'fas fa-fw fa-chevron-right',
+                    'data' => [
+                        'menu' => 'br'
+                    ],
+                ],
+            ]
         ],
         [
-            'text'        => 'Importações',
-            'url'         => '/app/import',
-            'icon'        => 'fas fa-fw fa-level-down-alt',
+            'text'        => 'Maritime',
+            'url'         => '#',
+            'icon'        => 'fas fa-fw fa-anchor',
+            'data' => [
+                'menu' => 'us'
+            ],
+            'submenu' => [
+                [
+                    'text'        => 'Exports',
+                    'url'         => '/app/export',
+                    'icon'        => 'fas fa-fw fa-chevron-right',
+                    'data' => [
+                        'menu' => 'us'
+                    ],
+                ],
+                [
+                    'text'        => 'Imports',
+                    'url'         => '/app/import',
+                    'icon'        => 'fas fa-fw fa-chevron-right',
+                    'data' => [
+                        'menu' => 'us'
+                    ],
+                ],
+            ]
         ],
+        [
+            'text'        => 'Aéreo',
+            'url'         => '#',
+            'icon'        => 'fas fa-fw fa-plane',
+            'data' => [
+                'menu' => 'br'
+            ],
+            'submenu' => [
+                [
+                    'text'        => 'House',
+                    'url'         => '/app/house',
+                    'icon'        => 'fas fa-fw fa-chevron-right',
+                    'data' => [
+                        'menu' => 'br'
+                    ],
+                ],
+                [
+                    'text'        => 'Escala',
+                    'url'         => '/app/escala',
+                    'icon'        => 'fas fa-fw fa-chevron-right',
+                    'data' => [
+                        'menu' => 'br'
+                    ],
+                ],
+            ]
+        ],
+        [
+            'text'        => 'Air',
+            'url'         => '#',
+            'icon'        => 'fas fa-fw fa-plane',
+            'data' => [
+                'menu' => 'us'
+            ],
+            'submenu' => [
+                [
+                    'text'        => 'House',
+                    'url'         => '/app/house',
+                    'icon'        => 'fas fa-fw fa-chevron-right',
+                    'data' => [
+                        'menu' => 'us'
+                    ],
+                ],
+                [
+                    'text'        => 'Scale',
+                    'url'         => '/app/escala',
+                    'icon'        => 'fas fa-fw fa-chevron-right',
+                    'data' => [
+                        'menu' => 'us'
+                    ],
+                ],
+            ]
+        ],
+
         [
             'text'        => 'Logout',
             'url'         => '/app/logout',

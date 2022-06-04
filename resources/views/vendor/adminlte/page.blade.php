@@ -47,9 +47,10 @@
     <footer class="main-footer fixed-bottom">
         <strong>Copyright © 2022-{{ date('Y') }} <a href="https://www.rodrigobrito.dev.br" target="_blank"
                 rel="noreferrer" title="Rodrigo Brito Desenvolvedor Web">rodrigobrito.dev.br</a>.</strong>
-        todos os direitos Reservados.
+        <span class="pt-br">Todos os direitos Reservados</span><span class="en-us">All rights
+            reserved</span>.
         <div class="float-right d-none d-sm-inline-block">
-            <b>Versão</b> 1.0.0
+            <b class="pt-br">Versão</b><b class="en-us">Version</b> 2.0.0
         </div>
     </footer>
 @stop
@@ -58,3 +59,59 @@
     @stack('js')
     @yield('js')
 @stop
+
+@section('custom_js')
+    <script>
+        const flagBr = $('*[data-flag="br"]');
+        const flagUs = $('*[data-flag="us"]');
+        const menuBr = $('*[data-menu="br"]');
+        const menuUs = $('*[data-menu="us"]');
+        const itensBr = $('.pt-br');
+        const itensUs = $('.en-us');
+
+        $('.en-us').hide();
+        let language = localStorage.getItem('interoceanica-language');
+
+        if (language == 'pt-br') {
+            itensUs.hide();
+            itensBr.show();
+            menuUs.hide();
+            menuBr.show();
+        }
+
+        if (language == 'en-us') {
+            itensUs.show();
+            itensBr.hide();
+            menuUs.show();
+            menuBr.hide();
+        }
+
+        if (flagBr && flagUs) {
+            $(flagBr).addClass('d-flex justify-content-between align-items-center')
+                .append('<img src="{{ asset('img/brazil.png') }}" height="20" class="ml-2"/>')
+                .on('click', (e) => {
+                    e.preventDefault();
+                    localStorage.setItem('interoceanica-language', 'pt-br');
+                    $(flagUs).removeClass('active');
+                    $(flagBr).addClass('active');
+                    itensUs.hide();
+                    itensBr.show();
+                    menuUs.hide();
+                    menuBr.show();
+                });
+
+            $(flagUs).addClass('d-flex justify-content-between align-items-center')
+                .append('<img src="{{ asset('img/united-states.png') }}" height="20" class="ml-2"/>')
+                .on('click', (e) => {
+                    e.preventDefault();
+                    localStorage.setItem('interoceanica-language', 'en-us');
+                    $(flagBr).removeClass('active');
+                    $(flagUs).addClass('active');
+                    itensUs.show();
+                    itensBr.hide();
+                    menuUs.show();
+                    menuBr.hide();
+                });
+        }
+    </script>
+@endsection
