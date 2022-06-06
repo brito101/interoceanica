@@ -1,8 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/img/brazil.png": "/img/brazil.png",
     "/img/favicon.png": "/img/favicon.png",
+    "/img/logo-white.png": "/img/logo-white.png",
     "/img/logo.png": "/img/logo.png",
+    "/img/united-kingdom.png": "/img/united-kingdom.png",
+    "/img/united-states.png": "/img/united-states.png",
     "/js/company.js": "/js/company.js",
     "/js/address.js": "/js/address.js",
     "/js/phone.js": "/js/phone.js"
