@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\RastEscala;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,8 @@ class DatabaseSeeder extends Seeder
             ModelHasRoleTableSeeder::class,
             RastImpoTableSeeder::class,
             RastExpoTableSeeder::class,
+            RastHouseTableSeeder::class,
+            RastEscalaTableSeeder::class,
         ]);
     }
 }

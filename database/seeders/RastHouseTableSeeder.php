@@ -20,7 +20,7 @@ class RastHouseTableSeeder extends Seeder
             [
                 'Ra_CodHouse' => 123456,
                 'Ra_CodMaster' => rand(0, 99999),
-                'Ra_ExpImp' => Str::random(50),
+                'Ra_ExpImp' => "impo",
                 'Ra_RefMaster' => Str::random(50),
                 'Ra_RefHouse' => Str::random(50),
                 'Ra_MAWB' => Str::random(50),
@@ -51,9 +51,9 @@ class RastHouseTableSeeder extends Seeder
                 'Ra_Senha' => 'teste1'
             ],
             [
-                'Ra_CodHouse' => rand(0, 99999),
+                'Ra_CodHouse' => 123457,
                 'Ra_CodMaster' => rand(0, 99999),
-                'Ra_ExpImp' => Str::random(50),
+                'Ra_ExpImp' => "expo",
                 'Ra_RefMaster' => Str::random(50),
                 'Ra_RefHouse' => Str::random(50),
                 'Ra_MAWB' => Str::random(50),

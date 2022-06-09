@@ -11,6 +11,8 @@ class RastHouse extends Model
 
     protected $table = 'A_Rast_House';
 
+    protected $appends = ['Re_Aeroporto', 'Re_Flight', 'Re_Data', 'Re_Hora'];
+
     public function getRaPrevSaidaAttribute($value)
     {
         return date('d/m/Y H:i:s', strtotime($value));
@@ -36,6 +38,30 @@ class RastHouse extends Model
         return date('d/m/Y H:i:s', strtotime($value));
     }
 
+    /** Appends */
+    public function getReAeroportoAttribute()
+    {
+        $escala = RastEscala::where('Re_Codigo', $this->Ra_CodHouse)->first();
+        return $escala->Re_Aeroporto;
+    }
+
+    public function getReFlightAttribute()
+    {
+        $escala = RastEscala::where('Re_Codigo', $this->Ra_CodHouse)->first();
+        return $escala->Re_Flight;
+    }
+
+    public function getReDataAttribute()
+    {
+        $escala = RastEscala::where('Re_Codigo', $this->Ra_CodHouse)->first();
+        return $escala->Re_Data;
+    }
+
+    public function getReHoraAttribute()
+    {
+        $escala = RastEscala::where('Re_Codigo', $this->Ra_CodHouse)->first();
+        return $escala->Re_Hora;
+    }
     /** Aux */
     public function getPrevSaida()
     {
@@ -64,6 +90,12 @@ class RastHouse extends Model
     public function getEntregaDest()
     {
         $date = explode('/', $this->Ra_EntregaDest);
+        return $date[1] . '/' . $date[0] . '/' . $date[2];
+    }
+
+    public function getDateUs()
+    {
+        $date = explode('/', $this->Re_Data);
         return $date[1] . '/' . $date[0] . '/' . $date[2];
     }
 }

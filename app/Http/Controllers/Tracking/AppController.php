@@ -13,6 +13,7 @@ use Illuminate\Validation\ValidationException;
 
 class AppController extends Controller
 {
+    /** HOME */
 
     /**
      * Display a listing of the resource.
@@ -26,9 +27,8 @@ class AppController extends Controller
         if ($email && $password) {
             $impo = RastImpo::where('Im_CneeLogin', $email)->count();
             $expo = RastExpo::where('Ex_ClienteLogin', $email)->count();
-            $rasthouse = RastHouse::where('Ra_Login', $email)->count();
-            $rasthouseId = RastHouse::where('Ra_Login', $email)->pluck('Ra_CodHouse');
-            $rastescala = RastEscala::whereIn('Re_Codigo', $rasthouseId)->count();
+            $rasthouse = RastHouse::where('Ra_Login', $email)->where('Ra_ExpImp', 'impo')->count();
+            $rastescala = RastHouse::where('Ra_Login', $email)->where('Ra_ExpImp', 'expo')->count();
             return view('app.home.index', compact('impo', 'expo', 'rasthouse', 'rastescala'));
         } else {
             return redirect()
@@ -36,40 +36,29 @@ class AppController extends Controller
         }
     }
 
-    public function export(Request $request)
+    /** MARITIME */
+    public function maritime(Request $request)
     {
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
         if ($email && $password) {
             $expo = RastExpo::where('Ex_ClienteLogin', $email)->get();
-            return view('app.export.index', compact('expo'));
+            $impo = RastImpo::where('Im_CneeLogin', $email)->get();
+            return view('app.maritime.index', compact('expo', 'impo'));
         } else {
             return redirect()
                 ->route('login');
         }
     }
 
-    public function exportGeral(Request $request)
-    {
-        $email = $request->session()->get('email');
-        $password = $request->session()->get('password');
-        if ($email && $password) {
-            $expo = RastExpo::where('Ex_ClienteLogin', $email)->get();
-            return view('app.export.geral', compact('expo'));
-        } else {
-            return redirect()
-                ->route('login');
-        }
-    }
-
-    public function exportCod(Request $request, $cod)
+    public function maritimeExport(Request $request, $cod)
     {
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
         if ($email && $password) {
             $expo = RastExpo::where('Ex_ReservaCod', $cod)->where('Ex_ClienteLogin', $email)->first();
             if ($expo) {
-                return view('app.export.item', compact('expo'));
+                return view('app.maritime.export', compact('expo'));
             } else {
                 return redirect()
                     ->route('app.export')
@@ -81,40 +70,14 @@ class AppController extends Controller
         }
     }
 
-    public function import(Request $request)
-    {
-        $email = $request->session()->get('email');
-        $password = $request->session()->get('password');
-        if ($email && $password) {
-            $impo = RastImpo::where('Im_CneeLogin', $email)->get();
-            return view('app.import.index', compact('impo'));
-        } else {
-            return redirect()
-                ->route('login');
-        }
-    }
-
-    public function importGeral(Request $request)
-    {
-        $email = $request->session()->get('email');
-        $password = $request->session()->get('password');
-        if ($email && $password) {
-            $impo = RastImpo::where('Im_CneeLogin', $email)->get();
-            return view('app.import.geral', compact('impo'));
-        } else {
-            return redirect()
-                ->route('login');
-        }
-    }
-
-    public function importCod(Request $request, $cod)
+    public function maritimeImport(Request $request, $cod)
     {
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
         if ($email && $password) {
             $impo = RastImpo::where('Im_MasterCod', $cod)->where('Im_CneeLogin', $email)->first();
             if ($impo) {
-                return view('app.import.item', compact('impo'));
+                return view('app.maritime.import', compact('impo'));
             } else {
                 return redirect()
                     ->route('app.import')
@@ -126,43 +89,57 @@ class AppController extends Controller
         }
     }
 
-    public function rastHouse(Request $request)
+    public function maritimeExportAll(Request $request)
     {
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
         if ($email && $password) {
-            $rasthouse = RastHouse::where('Ra_Login', $email)->get();
-            return view('app.rasthouse.index', compact('rasthouse'));
+            $expo = RastExpo::where('Ex_ClienteLogin', $email)->get();
+            return view('app.maritime.export-all', compact('expo'));
         } else {
             return redirect()
                 ->route('login');
         }
     }
 
-    public function rastHouseGeral(Request $request)
+    public function maritimeImportAll(Request $request)
     {
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
         if ($email && $password) {
-            $house = RastHouse::where('Ra_Login', $email)->get();
-            return view('app.rasthouse.geral', compact('house'));
+            $impo = RastImpo::where('Im_CneeLogin', $email)->get();
+            return view('app.maritime.import-all', compact('impo'));
         } else {
             return redirect()
                 ->route('login');
         }
     }
 
-    public function rastHouseCod(Request $request, $cod)
+    public function air(Request $request)
     {
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
         if ($email && $password) {
-            $item = RastHouse::where('Ra_CodHouse', $cod)->where('Ra_Login', $email)->first();
+            $expo = RastHouse::where('Ra_Login', $email)->where('Ra_ExpImp', 'expo')->get();
+            $impo = RastHouse::where('Ra_Login', $email)->where('Ra_ExpImp', 'impo')->get();
+            return view('app.air.index', compact('expo', 'impo'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function airExport(Request $request, $cod)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $item = RastHouse::where('Ra_CodHouse', $cod)->where('Ra_Login', $email)->where('Ra_ExpImp', 'expo')->first();
             if ($item) {
-                return view('app.rasthouse.item', compact('item'));
+                return view('app.air.export', compact('item'));
             } else {
                 return redirect()
-                    ->route('app.rasthouse')
+                    ->route('app.air')
                     ->with('error', 'Nenhum registro encontrado!');
             }
         } else {
@@ -171,32 +148,17 @@ class AppController extends Controller
         }
     }
 
-    public function rastEscala(Request $request)
+    public function airImport(Request $request, $cod)
     {
         $email = $request->session()->get('email');
         $password = $request->session()->get('password');
         if ($email && $password) {
-            $rasthouse = RastHouse::where('Ra_Login', $email)->pluck('Ra_CodHouse');
-            $rastescala = RastEscala::whereIn('Re_Codigo', $rasthouse)->get();
-            return view('app.rastescala.index', compact('rastescala'));
-        } else {
-            return redirect()
-                ->route('login');
-        }
-    }
-
-    public function rastEscalaCod(Request $request, $cod)
-    {
-        $email = $request->session()->get('email');
-        $password = $request->session()->get('password');
-        if ($email && $password) {
-            $house = RastHouse::where('Ra_CodHouse', $cod)->where('Ra_Login', $email)->first();
-            $item = RastEscala::where('Re_Codigo', $house->Ra_CodHouse)->first();
+            $item = RastHouse::where('Ra_CodHouse', $cod)->where('Ra_Login', $email)->where('Ra_ExpImp', 'impo')->first();
             if ($item) {
-                return view('app.rastescala.item', compact('item'));
+                return view('app.air.import', compact('item'));
             } else {
                 return redirect()
-                    ->route('app.rastescala')
+                    ->route('app.air')
                     ->with('error', 'Nenhum registro encontrado!');
             }
         } else {
@@ -205,6 +167,203 @@ class AppController extends Controller
         }
     }
 
+    public function airExportAll(Request $request)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $house = RastHouse::where('Ra_Login', $email)->where('Ra_ExpImp', 'expo')->get();
+            return view('app.air.export-all', compact('house'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+    public function airImportAll(Request $request)
+    {
+        $email = $request->session()->get('email');
+        $password = $request->session()->get('password');
+        if ($email && $password) {
+            $house = RastHouse::where('Ra_Login', $email)->where('Ra_ExpImp', 'impo')->get();
+            return view('app.air.import-all', compact('house'));
+        } else {
+            return redirect()
+                ->route('login');
+        }
+    }
+
+
+    // public function export(Request $request)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $expo = RastExpo::where('Ex_ClienteLogin', $email)->get();
+    //         return view('app.export.index', compact('expo'));
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function exportGeral(Request $request)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $expo = RastExpo::where('Ex_ClienteLogin', $email)->get();
+    //         return view('app.export.geral', compact('expo'));
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function exportCod(Request $request, $cod)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $expo = RastExpo::where('Ex_ReservaCod', $cod)->where('Ex_ClienteLogin', $email)->first();
+    //         if ($expo) {
+    //             return view('app.export.item', compact('expo'));
+    //         } else {
+    //             return redirect()
+    //                 ->route('app.export')
+    //                 ->with('error', 'Nenhum registro encontrado!');
+    //         }
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function import(Request $request)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $impo = RastImpo::where('Im_CneeLogin', $email)->get();
+    //         return view('app.import.index', compact('impo'));
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function importGeral(Request $request)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $impo = RastImpo::where('Im_CneeLogin', $email)->get();
+    //         return view('app.import.geral', compact('impo'));
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function importCod(Request $request, $cod)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $impo = RastImpo::where('Im_MasterCod', $cod)->where('Im_CneeLogin', $email)->first();
+    //         if ($impo) {
+    //             return view('app.import.item', compact('impo'));
+    //         } else {
+    //             return redirect()
+    //                 ->route('app.import')
+    //                 ->with('error', 'Nenhum registro encontrado!');
+    //         }
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function rastHouse(Request $request)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $rasthouse = RastHouse::where('Ra_Login', $email)->get();
+    //         return view('app.rasthouse.index', compact('rasthouse'));
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function rastHouseGeral(Request $request)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $house = RastHouse::where('Ra_Login', $email)->get();
+    //         return view('app.rasthouse.geral', compact('house'));
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function rastHouseCod(Request $request, $cod)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $item = RastHouse::where('Ra_CodHouse', $cod)->where('Ra_Login', $email)->first();
+    //         if ($item) {
+    //             return view('app.rasthouse.item', compact('item'));
+    //         } else {
+    //             return redirect()
+    //                 ->route('app.rasthouse')
+    //                 ->with('error', 'Nenhum registro encontrado!');
+    //         }
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function rastEscala(Request $request)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $rasthouse = RastHouse::where('Ra_Login', $email)->pluck('Ra_CodHouse');
+    //         $rastescala = RastEscala::whereIn('Re_Codigo', $rasthouse)->get();
+    //         return view('app.rastescala.index', compact('rastescala'));
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    // public function rastEscalaCod(Request $request, $cod)
+    // {
+    //     $email = $request->session()->get('email');
+    //     $password = $request->session()->get('password');
+    //     if ($email && $password) {
+    //         $house = RastHouse::where('Ra_CodHouse', $cod)->where('Ra_Login', $email)->first();
+    //         $item = RastEscala::where('Re_Codigo', $house->Ra_CodHouse)->first();
+    //         if ($item) {
+    //             return view('app.rastescala.item', compact('item'));
+    //         } else {
+    //             return redirect()
+    //                 ->route('app.rastescala')
+    //                 ->with('error', 'Nenhum registro encontrado!');
+    //         }
+    //     } else {
+    //         return redirect()
+    //             ->route('login');
+    //     }
+    // }
+
+    /** ACCESS */
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [

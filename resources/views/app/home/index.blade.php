@@ -26,8 +26,7 @@
                     <div class="d-flex flex-wrap justify-content-center">
                         <div class="col-12 col-md-3">
                             <div class="info-box mb-3">
-                                <span class="info-box-icon bg-primary elevation-1"><i
-                                        class="fas fa-level-up-alt"></i></span>
+                                <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-ship"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text pt-br">Exportações</span>
                                     <span class="info-box-text en-us">Exports</span>
@@ -48,22 +47,23 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="info-box mb-3">
-                                <span class="info-box-icon bg-success elevation-1"><i
-                                        class="fas fa-plane-arrival"></i></span>
+                                <span class="info-box-icon bg-info elevation-1"><i
+                                        class="fas fa-plane-departure"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">House</span>
-                                    <span class="info-box-number">{{ $rasthouse }}</span>
+                                    <span class="info-box-text pt-br">Exportações</span>
+                                    <span class="info-box-text en-us">Export</span>
+                                    <span class="info-box-number">{{ $rastescala }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="info-box mb-3">
-                                <span class="info-box-icon bg-info elevation-1"><i
-                                        class="fas fa-plane-departure"></i></span>
+                                <span class="info-box-icon bg-success elevation-1"><i
+                                        class="fas fa-plane-arrival"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text pt-br">Escala</span>
-                                    <span class="info-box-text en-us">Scale</span>
-                                    <span class="info-box-number">{{ $rastescala }}</span>
+                                    <span class="info-box-text pt-br">Importações</span>
+                                    <span class="info-box-text en-us">Imports</span>
+                                    <span class="info-box-number">{{ $rasthouse }}</span>
                                 </div>
                             </div>
                         </div>
