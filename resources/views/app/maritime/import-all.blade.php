@@ -39,7 +39,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><i class="fas fa-level-down-alt"></i> Importações</h1>
+                        <h1><img src="{{ asset('img/ship.png') }}" alt="" title=""
+                                style="-webkit-transform: scaleX(-1); transform: scaleX(-1);" class="mr-2">
+                            Importações</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -77,7 +79,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><i class="fas fa-level-down-alt"></i> Imports</h1>
+                        <h1><img src="{{ asset('img/ship.png') }}" alt="" title=""
+                                style="-webkit-transform: scaleX(-1); transform: scaleX(-1);" class="mr-2">
+                            Imports</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">

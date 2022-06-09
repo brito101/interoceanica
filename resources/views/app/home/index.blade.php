@@ -26,7 +26,8 @@
                     <div class="d-flex flex-wrap justify-content-center">
                         <div class="col-12 col-md-3">
                             <div class="info-box mb-3">
-                                <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-ship"></i></span>
+                                <span class="info-box-icon bg-primary elevation-1"><img src="{{ asset('img/ship.png') }}"
+                                        alt="" title="" style="filter: invert(100%);"></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text pt-br">Exportações</span>
                                     <span class="info-box-text en-us">Exports</span>
@@ -36,8 +37,9 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="info-box mb-3">
-                                <span class="info-box-icon bg-warning elevation-1"><i
-                                        class="fas fa-level-down-alt"></i></span>
+                                <span class="info-box-icon bg-success elevation-1"><img src="{{ asset('img/ship.png') }}"
+                                        alt="" title=""
+                                        style="-webkit-transform: scaleX(-1); transform: scaleX(-1); filter: invert(100%);"></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text pt-br">Importações</span>
                                     <span class="info-box-text en-us">Imports</span>
@@ -58,8 +60,7 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="info-box mb-3">
-                                <span class="info-box-icon bg-success elevation-1"><i
-                                        class="fas fa-plane-arrival"></i></span>
+                                <span class="info-box-icon bg-teal elevation-1"><i class="fas fa-plane-arrival"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text pt-br">Importações</span>
                                     <span class="info-box-text en-us">Imports</span>

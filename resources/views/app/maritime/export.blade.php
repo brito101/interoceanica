@@ -9,7 +9,8 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><i class="fas fa-fw fa-ship"></i> Item de Exportação</h1>
+                        <h1><img src="{{ asset('img/ship.png') }}" alt="" title="" class="mr-2"> Item de
+                            Exportação</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -189,7 +190,8 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><i class="fas fa-fw fa-ship"></i> Export Item</h1>
+                        <h1><img src="{{ asset('img/ship.png') }}" alt="" title="" class="mr-2"> Export Item
+                        </h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
