@@ -69,8 +69,8 @@
         const itensBr = $('.pt-br');
         const itensUs = $('.en-us');
 
-        itensUs.hide();
-        menuUs.hide();
+        itensBr.hide();
+        menuBr.hide();
 
         let language = localStorage.getItem('interoceanica-language');
 
